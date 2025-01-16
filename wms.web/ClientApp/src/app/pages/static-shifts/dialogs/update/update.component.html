@@ -1,0 +1,86 @@
+<mat-dialog-content>
+  <h1 class="mb-4 text-[24px] font-semibold text-cyan-600">Cập nhật</h1>
+
+  <form [formGroup]="updateForm">
+    <div class="mb-6">
+      <label
+        for="static_shift_id"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >ID khung giờ</label
+      >
+      <input
+        type="text"
+        id="static_shift_id"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder=""
+        formControlName="staticShiftID"
+        [disabled]="true"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="static_shift_name"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Tên khung giờ</label
+      >
+      <input
+        type="text"
+        id="static_shift_name"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder=""
+        formControlName="staticShiftName"
+        [disabled]="true"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="start_time"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Giờ bắt đầu</label
+      >
+      <input
+        type="text"
+        id="start_time"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Nhập giờ bắt đầu"
+        formControlName="startTime"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="end_time"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Giờ kết thúc</label
+      >
+      <input
+        type="text"
+        id="end_time"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Nhập giờ kết thúc"
+        formControlName="endTime"
+      />
+    </div>
+
+    <div class="mb-6">
+      <p-checkbox
+        [binary]="true"
+        inputId="binary"
+        id="is_overtime"
+        formControlName="isOvertime"
+      />
+      <label for="is_overtime"> Ngoài giờ</label>
+    </div>
+
+    <button
+      (click)="onUpdate($event)"
+      type="submit"
+      class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+    >
+      Cập nhật
+    </button>
+  </form>
+</mat-dialog-content>

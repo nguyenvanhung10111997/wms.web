@@ -1,0 +1,24 @@
+<mat-dialog-content>
+  <div class="mb-4 text-[18px] font-semibold">
+    Xác định xóa
+    <span class="font-semibold text-red-700">
+      {{ data?.productName }}
+    </span>
+  </div>
+
+  <button
+    (click)="onNoClick()"
+    type="submit"
+    class="mr-5 w-full rounded-lg bg-concrete px-5 py-2.5 text-center text-sm font-medium text-mine-shaft sm:w-auto"
+  >
+    Xem lại
+  </button>
+
+  <button
+    (click)="onDelete($event)"
+    type="submit"
+    class="w-full rounded-lg bg-red-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+  >
+    Xóa
+  </button>
+</mat-dialog-content>

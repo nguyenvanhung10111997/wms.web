@@ -1,0 +1,14 @@
+@if (showLoader) {
+  <div
+    class="fixed bottom-[0] left-[0] right-[0] top-[0] flex items-center justify-center bg-[rgba(0,_0,_0,_0.1)]"
+  >
+    <div class="flex items-center justify-center">
+      <ng-lottie
+        [options]="options"
+        width="200px"
+        height="200px"
+        (animationCreated)="animationCreated($event)"
+      />
+    </div>
+  </div>
+}

@@ -1,0 +1,13 @@
+<label class="radio-button__group">
+  <input
+    type="radio"
+    [value]="value"
+    [checked]="checked"
+    [disabled]="disabled"
+    (click)="handleRadioButtonChange($event,value)"
+  />
+  <span class="checkmark"
+    [ngClass]="{'checkmark--disabled': disabled}"
+  ></span>
+  <span class="checktext">{{ text }}</span>
+</label>

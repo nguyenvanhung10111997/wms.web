@@ -1,0 +1,12 @@
+<div class="relative h-full w-full overflow-hidden" [ngStyle]="theme">
+  <img
+    [ngSrc]="src"
+    [alt]="alt"
+    [title]="title"
+    [ngStyle]="theme"
+    [priority]="priority"
+    [fill]="fill"
+    [placeholder]="placeholder"
+    (error)="onError($event)"
+  />
+</div>

@@ -1,0 +1,72 @@
+<footer class="footer-mobile">
+  <div class="f-mobile__wrapper">
+    <div class="f-mobile__layout">
+      <a
+        routerLink="/"
+        class="f-mobile__item"
+        [routerLinkActive]="'f-mobile__item__title--active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <div class="f-mobile__item__icon">
+          <img
+            class="home-icon"
+            src=""
+            alt="home-icon"
+          />
+        </div>
+
+        <span class="f-mobile__item__title">trang chủ</span>
+      </a>
+
+      <a
+        [routerLink]="['/tim-kiem']"
+        class="f-mobile__item"
+        [routerLinkActive]="'f-mobile__item__title--active'"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <div class="f-mobile__item__icon">
+          <img
+            class="search-icon"
+            src=""
+            alt="search-icon"
+          />
+        </div>
+
+        <span class="f-mobile__item__title">tìm kiếm</span>
+      </a>
+
+      <a
+        [routerLink]="['/danh-muc']"
+        class="f-mobile__item"
+        [routerLinkActive]="'f-mobile__item__title--active'"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <div class="f-mobile__item__icon">
+          <img
+            class="category-icon"
+            src=""
+            alt="category-icon"
+          />
+        </div>
+
+        <span class="f-mobile__item__title">danh mục</span>
+      </a>
+      <a
+        [routerLink]="'/account'"
+        class="f-mobile__item"
+        [routerLinkActive]="'f-mobile__item__title--active'"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <div class="f-mobile__item__icon">
+          <img
+            class="account-icon"
+            src=""
+            alt="account-icon"
+          />
+        </div>
+
+        <span class="f-mobile__item__title">cá nhân</span>
+      </a>
+    </div>
+  </div>
+</footer>

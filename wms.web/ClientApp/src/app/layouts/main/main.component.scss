@@ -1,0 +1,13 @@
+.active-link {
+  color: #202020;
+  background-color: #fff;
+  font-weight: 600;
+
+  span {
+    svg {
+      path {
+        stroke: #202020;
+      }
+    }
+  }
+}

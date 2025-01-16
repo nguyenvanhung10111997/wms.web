@@ -1,0 +1,18 @@
+<owl-carousel-o
+  [options]="options"
+  (dragging)="dragging.emit($event)"
+  (changed)="changed.emit($event)"
+  (change)="change.emit($event)"
+  (translated)="translated.emit($event)"
+  (initialized)="initialized.emit($event)"
+>
+  @for (slide of dataSource; track $index) {
+    <ng-container>
+      <ng-template carouselSlide [id]="convertStringIndex(slide.id)">
+        <ng-container
+          *ngTemplateOutlet="template; context: { $implicit: slide }"
+        ></ng-container>
+      </ng-template>
+    </ng-container>
+  }
+</owl-carousel-o>

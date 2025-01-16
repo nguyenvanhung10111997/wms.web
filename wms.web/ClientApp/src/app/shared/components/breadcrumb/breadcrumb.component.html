@@ -1,0 +1,54 @@
+<!-- breadcrumb start -->
+@if (breakpoints && !breakpoints.isPhoneOnly) {
+  <div class="breadcrumb-section">
+    <div class="mx-auto max-w-container">
+      <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol class="breadcrumb flex flex-wrap">
+          <li class="breadcrumb-item">
+            <a [routerLink]="'/'" class="text-gray-600 hover:text-gray-800"
+              >Trang chủ</a
+            >
+          </li>
+          @for (item of lisBreadcrumb; track $index) {
+            <li class="breadcrumb-item flex items-center">
+              <span class="breadcrumb-divider mx-2 text-gray-600">
+                <!-- SVG Arrow -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-3 w-3"
+                  viewBox="0 0 8 8"
+                  fill="currentColor"
+                >
+                  <path d="M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z" />
+                </svg>
+              </span>
+              <a
+                [routerLink]="item.link"
+                class="text-gray-600 hover:text-gray-800"
+                >{{ item.title }}</a
+              >
+            </li>
+          }
+          <li
+            class="breadcrumb-item active flex items-center"
+            aria-current="page"
+          >
+            <span class="breadcrumb-divider mx-2 text-gray-600">
+              <!-- SVG Arrow -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                viewBox="0 0 8 8"
+                fill="currentColor"
+              >
+                <path d="M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z" />
+              </svg>
+            </span>
+            {{ title }}
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+}
+<!-- breadcrumb End -->

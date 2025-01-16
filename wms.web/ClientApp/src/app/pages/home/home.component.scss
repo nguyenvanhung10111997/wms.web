@@ -1,0 +1,13 @@
+:host ::ng-deep .p-datatable-wrapper {
+  tr,
+  th,
+  td {
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tr:nth-child(even) td {
+    color: #125b9a;
+  }
+}

@@ -1,0 +1,58 @@
+<mat-dialog-content>
+  <h1 class="mb-4 text-[24px] font-semibold text-cyan-600">Thêm mới</h1>
+
+  <form [formGroup]="createForm">
+    <div class="mb-6">
+      <label
+        for="machine_id"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Khung giờ</label
+      >
+      <input
+        type="text"
+        id="machine_id"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Nhập khung giờ"
+        formControlName="staticShiftName"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="machine_name"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Thời gian bắt đầu</label
+      >
+      <input
+        type="text"
+        id="machine_name"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Nhập thời gian bắt đầu"
+        formControlName="startTime"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="machine_name"
+        class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >Thời gian kết thúc</label
+      >
+      <input
+        type="text"
+        id="machine_name"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Nhập thời gian kết thúc"
+        formControlName="endTime"
+      />
+    </div>
+
+    <button
+      (click)="onCreate($event)"
+      type="submit"
+      class="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+    >
+      Thêm mới
+    </button>
+  </form>
+</mat-dialog-content>

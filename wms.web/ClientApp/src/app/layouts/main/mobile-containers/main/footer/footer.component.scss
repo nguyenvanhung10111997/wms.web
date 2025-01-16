@@ -1,0 +1,70 @@
+@use "../../../../../../assets/scss/breakpoints" as bp;
+
+.f-mobile {
+  &__wrapper {
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 10px 0 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2000;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    column-gap: 0px;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+      margin-bottom: 8px;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &__title {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #67686c;
+      text-transform: capitalize;
+
+      &--active {
+        font-weight: 600;
+
+        span {
+          color: rgb(245, 66, 130);
+        }
+
+        .home-icon {
+          //content: url();
+        }
+        .search-icon {
+          //content: url();
+        }
+        .category-icon {
+          //content: url();
+        }
+        .cart-icon {
+          //content: url();
+        }
+        .account-icon {
+          //content: url();
+        }
+      }
+    }
+  }
+}

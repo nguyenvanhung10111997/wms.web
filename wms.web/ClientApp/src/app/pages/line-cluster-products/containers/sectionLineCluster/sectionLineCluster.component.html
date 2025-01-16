@@ -1,0 +1,485 @@
+@if (newListData?.length > 0) {
+  <div class="mb-4">
+    <p-panel [toggleable]="true">
+      <ng-template pTemplate="header">
+        <div class="align-items-center">
+          <span class="font-bold">Chuyền {{ lineID }}</span>
+        </div>
+      </ng-template>
+      @for (item of newListData; track $index) {
+        <div
+          class="mb-4 border-b border-l-0 border-r-0 border-t-0 border-solid border-gallery pb-4 last:border-none"
+        >
+          <div>
+            <!--Thông tin đơn hàng-->
+            <div
+              class="mb-2 grid w-full items-center gap-x-3 gap-y-6 mobile:grid-cols-1 desktop-up:grid-cols-5"
+            >
+              <div class="col-span-2">
+                <div class="mb-4 flex items-center gap-x-4">
+                  <div class="text-[15px]">
+                    <div class="flex items-center gap-x-4">
+                      <div class="flex items-center gap-2">
+                        <i class="ti-layout-grid2"></i>Mã Hàng:
+                        <span class="font-semibold">{{
+                          item.ProductCode
+                        }}</span>
+                      </div>
+                      <div class="flex items-center gap-x-2">
+                        <div
+                          class="relative h-[15px] w-[15px] rounded-[50%] border-2 border-solid border-gray-400 after:absolute after:left-[53%] after:top-[53%] after:h-[85%] after:w-[85%] after:-translate-x-1/2 after:-translate-y-[50%] after:rounded-[50%] after:bg-green-600 after:content-['']"
+                        ></div>
+                        <div class="text-[15px] uppercase text-green-800">
+                          Đang sản xuất
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <img
+                    src="/assets/svg/customer.svg"
+                    alt="customer"
+                    width="22px"
+                  />
+                  Khách hàng: <span>{{ item.CustomerName }}</span>
+                </div>
+              </div>
+
+              <div class="mobile:col-span-2">
+                <div class="mb-4 flex items-center gap-2">
+                  <i class="ti-harddrives"></i>Tổng MH:
+                  <span>{{ item.TotalTargetQuantity | number: "1.0-0" }}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="ti-notepad"></i>Đơn giá MH:
+                  <span> {{ item.TotalAmount | formatMoney }}</span>
+                </div>
+              </div>
+
+              <div class="mobile:col-span-2">
+                <div class="mb-4 flex items-center gap-2">
+                  <img
+                    src="/assets/svg/calendar.svg"
+                    alt="calendar"
+                    width="22px"
+                  />Ngày bắt đầu:
+                  <span>{{ formatDate(item.BeginDate) }}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <img
+                    src="/assets/svg/calendar.svg"
+                    alt="calendar"
+                    width="22px"
+                  />Ngày kết thúc:
+                  <span>{{ formatDate(item.EndDate) }}</span>
+                </div>
+              </div>
+
+              <div class="mobile:col-span-2">
+                <div class="mb-4 flex items-center gap-2">
+                  <i class="ti-layout-accordion-separated"></i>
+                  PO:
+
+                  @if (item.isPoEdit) {
+                    <input
+                      class="h-[20px] w-[90px] text-[13px]"
+                      type="text"
+                      [min]="0"
+                      [(ngModel)]="item.OrderCode"
+                    />
+                  } @else {
+                    <span>{{ item.OrderCode }}</span>
+                  }
+
+                  @if (item.isPoEdit) {
+                    <button
+                      class="ml-2 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-transparent"
+                      (click)="onUpdateOrder('isPo', item)"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m4.5 12.75 6 6 9-13.5"
+                        />
+                      </svg>
+                    </button>
+                  } @else {
+                    <button
+                      class="ml-2 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-transparent"
+                      (click)="item.isPoEdit = true"
+                    >
+                      <i class="ti-marker-alt"></i>
+                    </button>
+                  }
+                </div>
+                <div class="flex items-center gap-2">
+                  <img src="/assets/svg/worker.svg" width="22px" alt="worker" />
+                  Số lao động:
+
+                  @if (item.isTotalWorker) {
+                    <input
+                      class="h-[20px] w-[80px] text-[13px]"
+                      type="number"
+                      [min]="0"
+                      [(ngModel)]="item.TotalWorkers"
+                    />
+                  } @else {
+                    <span>{{ item.TotalWorkers | number: "1.0-0" }}</span>
+                  }
+
+                  @if (item.isTotalWorker) {
+                    <button
+                      class="ml-2 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-transparent"
+                      (click)="onUpdateOrder('isTotalWorker', item)"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m4.5 12.75 6 6 9-13.5"
+                        />
+                      </svg>
+                    </button>
+                  } @else {
+                    <button
+                      class="ml-2 flex h-[16px] w-[16px] items-center justify-center rounded-full bg-transparent"
+                      (click)="item.isTotalWorker = true"
+                    >
+                      <i class="ti-marker-alt"></i>
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              (click)="onOpenUpdateStatusOrder(item.OrderId, item.ProductCode)"
+              class="flex w-[8rem] cursor-pointer items-center justify-center border border-solid border-fun-blue bg-white py-1 text-[14px] opacity-100"
+            >
+              <i class="ti-reload text-[14px]"></i>
+              <span class="ml-2 font-semibold">Kết thúc</span>
+            </button>
+          </div>
+
+          <p-table
+            [value]="item.Details"
+            [scrollable]="true"
+            rowGroupMode="rowspan"
+            groupRowsBy="line.ClusterId"
+            [tableStyle]="{
+              fontSize: '12px'
+            }"
+          >
+            <ng-template pTemplate="header">
+              <tr class="bg-[#CAFE8B] font-semibold capitalize text-[#000]">
+                <th>Cụm</th>
+                <th>Số lượng</th>
+                @for (shift of listDataStaticShift; track $index) {
+                  <th>{{ shift.StaticShiftName }}</th>
+                }
+              </tr>
+
+              <!--Phần trăm-->
+              <!-- <tr>
+                <th class="m-0 bg-[#526E48] p-0 font-semibold text-white"></th>
+
+                <th
+                  class="m-0 h-[30px] w-full border-0 bg-[#526E48] p-0 text-center font-semibold text-white"
+                >
+                  <div>
+                    {{
+                      getOrderTargetQuantityById(item.OrderId)
+                        .TotalTargetQuantityPercent
+                    }}%
+                  </div>
+                </th>
+
+                @for (
+                  shift of getOrderTargetQuantityById(item.OrderId).Details;
+                  track $index
+                ) {
+                  <th
+                    class="m-0 h-[30px] w-full border-0 bg-[#526E48] p-0 text-center font-semibold text-white"
+                  >
+                    <div>{{ shift.TargetQuantityPercent }}%</div>
+                  </th>
+                }
+              </tr> -->
+
+              <!--Số lượng-->
+              <tr class="font-semibold capitalize text-[#000]">
+                <th class="m-0 p-0">
+                  @if (item.isUpdate) {
+                    <button
+                      class="flex w-full items-center justify-center rounded-full bg-transparent"
+                      (click)="
+                        onUpdateQuantity(
+                          getOrderTargetQuantityById(item.OrderId),
+                          item
+                        )
+                      "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m4.5 12.75 6 6 9-13.5"
+                        />
+                      </svg>
+                    </button>
+                  } @else {
+                    <button
+                      class="flex w-full items-center justify-center rounded-full bg-transparent"
+                      (click)="item.isUpdate = true"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                        />
+                      </svg>
+                    </button>
+                  }
+                </th>
+                <th class="m-0 cursor-not-allowed p-0 text-center opacity-80">
+                  <!-- (onInput)="onInputTotalTagetQuantity(item.OrderId)" -->
+                  <!-- [disabled]="!item.isUpdate" -->
+                  <!-- [ngClass]="{
+                    'cursor-not-allowed opacity-80': !item.isUpdate
+                  }" -->
+                  <p-inputNumber
+                    [(ngModel)]="
+                      getOrderTargetQuantityById(item.OrderId)
+                        .TotalTargetQuantity
+                    "
+                    styleClass="w-[80px] bg-transparent border-none outline-none cursor-not-allowed opacity-80"
+                    inputStyleClass="w-full bg-transparent border-none outline-none cursor-not-allowed opacity-80 text-[14px] py-[10px]"
+                    min="0"
+                    [disabled]="true"
+                  ></p-inputNumber>
+                </th>
+                @for (
+                  shift of getOrderTargetQuantityById(item.OrderId).Details;
+                  track $index
+                ) {
+                  <th
+                    class="m-0 p-0 text-center"
+                    [ngClass]="{
+                      'cursor-not-allowed opacity-80': !item.isUpdate
+                    }"
+                  >
+                    <p-inputNumber
+                      [(ngModel)]="shift.TargetQuantity"
+                      min="0"
+                      styleClass="w-[80px] bg-transparent border-none outline-none"
+                      inputStyleClass="w-full bg-transparent border-none outline-none  text-[14px] py-[10px]"
+                      [allowEmpty]="false"
+                      [ngClass]="{
+                        'cursor-not-allowed opacity-80': !item.isUpdate
+                      }"
+                      maxFractionDigits="20"
+                      [disabled]="!item.isUpdate"
+                      (onInput)="
+                        onInputTagetQuantity(item.OrderId, shift.StaticShiftId)
+                      "
+                    ></p-inputNumber>
+                  </th>
+                }
+              </tr>
+            </ng-template>
+
+            <ng-template
+              pTemplate="body"
+              let-data
+              let-rowgroup="rowgroup"
+              let-rowIndex="rowIndex"
+              let-rowspan="rowspan"
+              let-editing="editing"
+            >
+              <tr class="bg-[#CAFE8B] font-semibold capitalize text-[#000]">
+                <td class="capitalize">
+                  {{ data.ClusterName }}
+                </td>
+                <td>
+                  <span>{{ item.TotalTargetQuantity | number: "1.0-0" }}</span>
+                </td>
+                @for (shift of data.Details; track $index) {
+                  <td
+                    [pEditableColumn]="shift.TargetQuantity"
+                    pEditableColumnField="TargetQuantity"
+                  >
+                    {{ shift.TargetQuantity }}
+                  </td>
+                }
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      }
+
+      @if (findMissingClusterId(clusterIdActive, clusterId).length > 0) {
+        <div class="mb-4 flex items-center gap-x-2">
+          <div
+            class="relative h-[15px] w-[15px] rounded-[50%] border-2 border-solid border-gray-400 after:absolute after:left-[53%] after:top-[53%] after:h-[85%] after:w-[85%] after:-translate-x-1/2 after:-translate-y-[50%] after:rounded-[50%] after:bg-[#740938] after:content-['']"
+          ></div>
+          <div class="text-[15px] uppercase text-[#C62E2E]">
+            ĐANG NGƯNG NHẬP MÃ HÀNG ĐỂ SẢN XUẤT
+          </div>
+        </div>
+        <div class="mb-4">
+          <button
+            (click)="openCreateOrderDialog(lineID)"
+            class="flex w-[8rem] cursor-pointer items-center justify-center border border-solid border-fun-blue bg-white py-1 text-[14px] opacity-100"
+          >
+            <icon-add-table></icon-add-table>
+            <span class="ml-2 font-semibold">Tạo mới</span>
+          </button>
+        </div>
+
+        <p-table
+          [value]="findMissingClusterId(clusterIdActive, clusterId)"
+          [scrollable]="true"
+          rowGroupMode="rowspan"
+          groupRowsBy="line.ClusterId"
+          [tableStyle]="{
+            fontSize: '12px'
+          }"
+        >
+          <ng-template pTemplate="header">
+            <tr class="bg-[#BCB5B3] font-semibold capitalize text-[#000]">
+              <th class="min-w-[6rem] bg-[#BCB5B3]">Cụm</th>
+              <th class="min-w-[6rem] bg-[#BCB5B3]">Số lượng</th>
+              @for (shift of listDataStaticShift; track $index) {
+                <th class="bg-[#BCB5B3]">
+                  {{ shift?.StaticShiftName }}
+                </th>
+              }
+            </tr>
+          </ng-template>
+
+          <ng-template
+            pTemplate="body"
+            let-data
+            let-rowgroup="rowgroup"
+            let-rowIndex="rowIndex"
+            let-rowspan="rowspan"
+            let-editing="editing"
+          >
+            <tr class="bg-[#BCB5B3] font-semibold capitalize text-[#000]">
+              <td class="capitalize">Cụm {{ data }}</td>
+              <td class="font-bold text-green-400"></td>
+              @for (shift of listDataStaticShift; track $index) {
+                <td></td>
+              }
+            </tr>
+          </ng-template>
+        </p-table>
+      }
+    </p-panel>
+  </div>
+} @else {
+  <div class="mb-4">
+    <p-panel [toggleable]="true">
+      <ng-template pTemplate="header">
+        <div class="align-items-center">
+          <span class="font-bold">Chuyền {{ lineID }}</span>
+        </div>
+      </ng-template>
+
+      <!--Thông tin đơn hàng-->
+      <div class="mb-4 flex items-center gap-x-2">
+        <div
+          class="relative h-[15px] w-[15px] rounded-[50%] border-2 border-solid border-gray-400 after:absolute after:left-[53%] after:top-[53%] after:h-[85%] after:w-[85%] after:-translate-x-1/2 after:-translate-y-[50%] after:rounded-[50%] after:bg-[#740938] after:content-['']"
+        ></div>
+        <div class="text-[15px] uppercase text-[#C62E2E]">
+          ĐANG NGƯNG NHẬP MÃ HÀNG ĐỂ SẢN XUẤT
+        </div>
+      </div>
+      <div class="mb-4">
+        <button
+          (click)="openCreateOrderDialog(lineID)"
+          class="flex w-[8rem] cursor-pointer items-center justify-center border border-solid border-fun-blue bg-white py-1 text-[14px] opacity-100"
+        >
+          <icon-add-table></icon-add-table>
+          <span class="ml-2 font-semibold">Tạo mới</span>
+        </button>
+      </div>
+
+      @if (lineReadById.length > 0) {
+        <p-table
+          [value]="lineReadById"
+          [scrollable]="true"
+          rowGroupMode="rowspan"
+          groupRowsBy="line.ClusterId"
+          [tableStyle]="{
+            fontSize: '12px'
+          }"
+        >
+          <ng-template pTemplate="header">
+            <tr class="bg-[#BCB5B3] font-semibold capitalize text-[#000]">
+              <th class="min-w-[6rem] bg-[#BCB5B3]">Cụm</th>
+              <th class="min-w-[6rem] bg-[#BCB5B3]">Số lượng</th>
+              @for (shift of listDataStaticShift; track $index) {
+                <th class="bg-[#BCB5B3]">
+                  {{ shift?.StaticShiftName }}
+                </th>
+              }
+            </tr>
+          </ng-template>
+
+          <ng-template
+            pTemplate="body"
+            let-data
+            let-rowgroup="rowgroup"
+            let-rowIndex="rowIndex"
+            let-rowspan="rowspan"
+            let-editing="editing"
+          >
+            <tr class="bg-[#BCB5B3] font-semibold capitalize text-[#000]">
+              <td class="capitalize">
+                {{ data?.ClusterName }}
+              </td>
+              <td class="font-bold text-green-400"></td>
+              @for (shift of listDataStaticShift; track $index) {
+                <td></td>
+              }
+            </tr>
+          </ng-template>
+        </p-table>
+      }
+    </p-panel>
+  </div>
+}

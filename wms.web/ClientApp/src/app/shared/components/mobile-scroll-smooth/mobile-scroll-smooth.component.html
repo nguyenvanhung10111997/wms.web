@@ -1,0 +1,30 @@
+<div class="mobile-scroll-smooth" #mainElement>
+  @for (item of dataSource; track $index) {
+    <div
+      class="mobile-scroll-smooth__item"
+      [ngStyle]="{
+        'min-width': widthScrollMoothItem,
+        'max-width': widthScrollMoothItem,
+        'margin-right': marginScrollMoothItem
+      }"
+    >
+      <ng-container
+        *ngTemplateOutlet="template; context: { $implicit: item }"
+      ></ng-container>
+    </div>
+  }
+</div>
+
+<!-- Scroll bar -->
+@if (nav) {
+  <div class="scroll-bar">
+    <div class="scroll-bar__wrapper" [ngStyle]="{ width: widthScrollBar }">
+      <div
+        class="scroll-bar__item"
+        [ngStyle]="{
+          left: leftScrollBarItem
+        }"
+      ></div>
+    </div>
+  </div>
+}

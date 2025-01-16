@@ -1,0 +1,34 @@
+@use "../../../../assets/scss/breakpoints" as bp;
+
+.breadcrumb-section {
+  background-color: transparent;
+
+  .container {
+    @include bp.for-phone-only {
+      padding: 0 10px;
+    }
+  }
+}
+.breadcrumb-section .breadcrumb {
+  background-color: transparent;
+  justify-content: flex-start;
+  text-transform: unset;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  padding-right: 0;
+}
+
+.breadcrumb-section .breadcrumb a {
+  color: #5078a0;
+  font-weight: 500;
+}
+
+.breadcrumb-section .breadcrumb .active {
+  color: #404040;
+  font-weight: 500;
+}
+
+.breadcrumb-section {
+  padding: 10px 0;
+}

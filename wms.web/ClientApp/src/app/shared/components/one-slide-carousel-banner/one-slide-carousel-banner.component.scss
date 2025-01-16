@@ -1,0 +1,115 @@
+@use "../../../../assets/scss/breakpoints" as bp;
+
+:host ::ng-deep .carousel-banner {
+  max-width: 100%;
+
+  .carousel-wrapper {
+    height: 320px;
+    position: relative;
+    border-radius: 15px;
+
+    &__link {
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+    }
+  }
+
+  /*Điều chỉnh css của dot*/
+  .owl-carousel .owl-dots {
+    position: absolute;
+    bottom: 10px; /* Điều chỉnh vị trí  */
+    left: 50%; /* Điều chỉnh vị trí  */
+    transform: translateX(-50%); /* Điều chỉnh vị trí  */
+
+    @include bp.for-phone-only {
+      bottom: 5px;
+      left: 50%;
+    }
+  }
+
+  .owl-theme .owl-dots .owl-dot span {
+    border: 1.5px solid #fff;
+
+    @include bp.for-phone-only {
+      width: 0.6rem;
+      height: 0.6rem;
+      margin: 5px 3px;
+    }
+  }
+
+  .owl-theme .owl-dots .owl-dot.active span {
+    width: 2.4rem;
+    height: 1.2rem;
+    background: #ff379b;
+
+    @include bp.for-phone-only {
+      width: 1.2rem;
+      height: 0.6rem;
+    }
+  }
+
+  /*Điều chỉnh css của nav*/
+  .owl-carousel .owl-nav {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .owl-theme .owl-nav .owl-prev {
+    position: absolute;
+    left: 0px; /* Cách lề trái */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ffc8e9;
+    box-shadow: -1px 1px 3px 0px rgba(155, 155, 155, 0.4);
+    cursor: pointer;
+    color: #ff55b9;
+    background-color: #fff;
+
+    &:hover {
+      background-color: #ff55b9;
+      color: #fff;
+    }
+  }
+
+  .owl-theme .owl-nav .owl-next {
+    position: absolute;
+    right: 0px; /* Cách lề phải */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #ffc8e9;
+    box-shadow: -1px 1px 3px 0px rgba(155, 155, 155, 0.4);
+    cursor: pointer;
+    color: #ff55b9;
+    background-color: #fff;
+
+    &:hover {
+      background-color: #ff55b9;
+      color: #fff;
+    }
+  }
+
+  .owl-theme .owl-nav .owl-next.disabled,
+  .owl-theme .owl-nav .owl-prev.disabled {
+    cursor: not-allowed;
+    border: 1px solid #e2e2e2;
+    color: #e2e2e2;
+    background-color: #fff;
+
+    &:hover {
+      color: #e2e2e2;
+      background-color: #fff;
+    }
+  }
+}

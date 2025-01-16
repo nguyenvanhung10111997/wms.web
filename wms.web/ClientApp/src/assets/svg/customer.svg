@@ -1,0 +1,20 @@
+<svg id='Customer_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+
+
+<g transform="matrix(0.25 0 0 0.25 12 12)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 24)" >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(194,232,255); fill-rule: nonzero; opacity: 1;" transform=" translate(-40, -64)" d="M 4.5 77.5 L 4.5 72.401 C 4.5 56.604 27.782 50.80499999999999 29.058 50.5 L 50.943 50.5 C 52.218 50.805 75.5 56.612 75.5 72.401 L 75.5 77.5 L 4.5 77.5 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 0 24)" >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(116,150,196); fill-rule: nonzero; opacity: 1;" transform=" translate(-40, -64)" d="M 50.883 51 C 52.61 51.421 75 57.183 75 72.401 L 75 77 L 5 77 L 5 72.401 C 5 57.183 27.39 51.421 29.117 51 L 50.883 51 M 51 50 L 29 50 C 29 50 4 55.655 4 72.401 C 4 72.401 4 74.809 4 78 L 76 78 C 76 74.809 76 72.401 76 72.401 C 76 55.655 51 50 51 50 L 51 50 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 0 -18)" >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,238,163); fill-rule: nonzero; opacity: 1;" transform=" translate(-40, -22)" d="M 40 41.5 C 29.247999999999998 41.5 20.5 32.752 20.5 22 C 20.5 11.247999999999998 29.248 2.5 40 2.5 C 50.751999999999995 2.5 59.5 11.248 59.5 22 C 59.5 32.752 50.752 41.5 40 41.5 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 0 -18)" >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(186,155,72); fill-rule: nonzero; opacity: 1;" transform=" translate(-40, -22)" d="M 40 3 C 50.477000000000004 3 59 11.523 59 22 C 59 32.477000000000004 50.477000000000004 41 40 41 C 29.522999999999996 41 21 32.477000000000004 21 22 C 21 11.523 29.523 3 40 3 M 40 2 C 28.954 2 20 10.954 20 22 C 20 33.046 28.954 42 40 42 C 51.046 42 60 33.046 60 22 C 60 10.954 51.046 2 40 2 L 40 2 z" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</svg>

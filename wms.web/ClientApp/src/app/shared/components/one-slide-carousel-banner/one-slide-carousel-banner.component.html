@@ -1,0 +1,39 @@
+<div
+  class="carousel-banner"
+  [ngStyle]="{
+    height: heightCurrentSlide
+  }"
+>
+  <app-base-owl-carousel
+    [dataSource]="listData"
+    [options]="customOptions"
+    (dragging)="onDraggingCarousel($event)"
+  >
+    <ng-template let-slide>
+      <div
+        class="carousel-wrapper"
+        [ngStyle]="{
+          height: heightCurrentSlide,
+          borderRadius: borderRadius
+        }"
+      >
+        <a
+          class="carousel-wrapper__link"
+          [routerLink]="stateDragging.isDragging ? [] : slide.url"
+        >
+          <app-base-image
+            [src]="slide.srcImage"
+            [alt]="slide.title"
+            [title]="slide.title"
+            [theme]="{
+              borderRadius: '1.5rem'
+            }"
+            [fill]="true"
+            [priority]="true"
+            [placeholder]="true"
+          ></app-base-image>
+        </a>
+      </div>
+    </ng-template>
+  </app-base-owl-carousel>
+</div>

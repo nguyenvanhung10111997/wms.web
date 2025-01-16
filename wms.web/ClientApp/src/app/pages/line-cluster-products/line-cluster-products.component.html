@@ -1,0 +1,9 @@
+@for (line of lineList; track $index) {
+  @defer (on viewport) {
+    <app-section-line-cluster [lineID]="line.LineId"></app-section-line-cluster>
+  } @placeholder (minimum 1000ms) {
+    <app-block-skeleton
+      [theme]="{ marginBottom: '16px', height: '250px' }"
+    ></app-block-skeleton>
+  }
+}

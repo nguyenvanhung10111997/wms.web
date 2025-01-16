@@ -1,0 +1,113 @@
+<h1>CKeditor demo</h1>
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-2xl">
+    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+      Add a new product
+    </h2>
+    <form action="#">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <label
+            for="name"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Product Name</label
+          >
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+            placeholder="Type product name"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="brand"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Brand</label
+          >
+          <input
+            type="text"
+            name="brand"
+            id="brand"
+            class="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+            placeholder="Product brand"
+            required=""
+          />
+        </div>
+        <div class="w-full">
+          <label
+            for="price"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Price</label
+          >
+          <input
+            type="number"
+            name="price"
+            id="price"
+            class="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+            placeholder="$2999"
+            required=""
+          />
+        </div>
+        <div>
+          <label
+            for="category"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Category</label
+          >
+          <select
+            id="category"
+            class="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+          >
+            <option selected="">Select category</option>
+            <option value="TV">TV/Monitors</option>
+            <option value="PC">PC</option>
+            <option value="GA">Gaming/Console</option>
+            <option value="PH">Phones</option>
+          </select>
+        </div>
+        <div>
+          <label
+            for="item-weight"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Item Weight (kg)</label
+          >
+          <input
+            type="number"
+            name="item-weight"
+            id="item-weight"
+            class="focus:ring-primary-600 focus:border-primary-600 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+            placeholder="12"
+            required=""
+          />
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="description"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            >Description</label
+          >
+
+          <ckeditor
+            [editor]="Editor"
+            [config]="{}"
+            (ready)="
+              onReadyCKEditor($event, ckeditorConfigContent.maxFileSizeKB)
+            "
+            data="<p>Hello, world!</p>"
+            (change)="onChange($event)"
+          ></ckeditor>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="bg-primary-700 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 mt-4 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white focus:ring-4 sm:mt-6"
+      >
+        Add product
+      </button>
+    </form>
+  </div>
+</section>

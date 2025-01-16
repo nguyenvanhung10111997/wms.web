@@ -1,0 +1,41 @@
+.mobile-scroll-smooth {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /** chrome, edge, opera and safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* IE and Edge */
+  -ms-overflow-style: none;
+
+  /** firefox */
+  scrollbar-width: none;
+}
+
+.scroll-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #d6d6d6;
+    height: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__item {
+    width: 10px;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    transition: left 0.3s linear;
+    background-color: #ff379b;
+  }
+}

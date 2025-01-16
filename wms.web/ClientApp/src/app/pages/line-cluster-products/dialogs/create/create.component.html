@@ -1,0 +1,195 @@
+<div class="p-[20px]">
+  <form [formGroup]="formCreate" class="w-full" (ngSubmit)="onSubmit()">
+    <div class="mb-5 grid w-full grid-cols-3 gap-x-3 gap-y-6">
+      <!-- Mã hàng -->
+      <div>
+        <label
+          for="order-code"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Mã hàng
+        </label>
+        <input
+          formControlName="productCode"
+          type="text"
+          id="order-code"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          placeholder="Nhập mã hàng"
+        />
+      </div>
+
+      <!-- Tên khách hàng -->
+      <div>
+        <label for="customer-name" class="mb-2 flex items-center">
+          <img src="/assets/svg/customer.svg" alt="customer" />
+          <span
+            class="ml-[5px] text-sm font-medium text-gray-900 dark:text-white"
+            >Tên khách hàng</span
+          >
+        </label>
+        <input
+          formControlName="customerName"
+          type="text"
+          id="customer-name"
+          placeholder="Nhập tên khách hàng"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Purchase Order (PO) -->
+      <div>
+        <label
+          for="po"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          PO
+        </label>
+        <input
+          formControlName="orderCode"
+          type="text"
+          id="po"
+          placeholder="Nhập PO"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Tổng mã -->
+      <div>
+        <label
+          for="sum-code"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Tổng mã hàng
+        </label>
+        <input
+          formControlName="totalTargetQuantity"
+          type="text"
+          id="sum-code"
+          placeholder="Nhập tổng mã hàng"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Số lượng công nhân -->
+      <div>
+        <label
+          for="number-of-worker"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Số lượng công nhân
+        </label>
+        <input
+          formControlName="numberOfWorker"
+          type="number"
+          id="number-of-worker"
+          [min]="0"
+          pattern="^\d+(\.\d+)?$"
+          placeholder="Nhập số lượng công nhân"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Đơn giá -->
+      <div>
+        <label
+          for="unit-price"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Đơn giá
+        </label>
+        <input
+          formControlName="unitPrice"
+          type="number"
+          [min]="0"
+          pattern="^\d+(\.\d+)?$"
+          id="unit-price"
+          placeholder="Nhập đơn giá"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Tên chuyền -->
+      <div>
+        <label
+          for="line"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Tên chuyền
+        </label>
+        <input
+          formControlName="line"
+          type="text"
+          id="line"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Cụm sản xuất -->
+      <div>
+        <label
+          for="production-cluster"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Cụm sản xuất
+        </label>
+
+        <p-treeSelect
+          [appendTo]="'body'"
+          [style]="{ width: '100%' }"
+          containerStyleClass="w-full border border-solid border-[#ddd] h-[42px]"
+          [options]="nodes"
+          [metaKeySelection]="false"
+          selectionMode="checkbox"
+          placeholder="Chọn Cụm"
+          [virtualScroll]="true"
+          [virtualScrollItemSize]="46"
+          [showClear]="true"
+          [virtualScrollOptions]="{ scrollHeight: '200px' }"
+          formControlName="productionCluster"
+        />
+      </div>
+
+      <!-- Ngày bắt đầu -->
+      <div>
+        <label
+          for="start-date"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Ngày bắt đầu
+        </label>
+        <input
+          formControlName="startDate"
+          type="date"
+          id="start-date"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Ngày kết thúc -->
+      <div>
+        <label
+          for="end-date"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Ngày kết thúc
+        </label>
+        <input
+          formControlName="endDate"
+          type="date"
+          id="end-date"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        />
+      </div>
+    </div>
+
+    <!-- Nút Lưu -->
+    <div class="text-right">
+      <button
+        type="submit"
+        class="w-full cursor-pointer rounded-lg border-none bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
+      >
+        <i class="ti-save"></i> Lưu
+      </button>
+    </div>
+  </form>
+</div>

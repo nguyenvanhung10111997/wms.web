@@ -1,0 +1,158 @@
+@use "../../../../../../assets/scss/breakpoints" as bp;
+
+.header {
+  padding: 15px 0 10px 0;
+  background-color: #fff;
+
+  &--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    // background-color: #fff;
+  }
+}
+
+.header-mobile__main {
+  padding: 0 10px;
+
+  .mobile-main__layout {
+    display: grid;
+    grid-template-columns: 30px auto 60px;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  .mobile-main__logo {
+    width: 100%;
+    height: 3rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .search-product {
+    display: none;
+
+    &--mobile {
+      display: block;
+    }
+
+    &__form {
+      display: flex;
+      align-items: stretch;
+      border-radius: 50px;
+      padding: 3px;
+      border: 1px solid #ff0080d9;
+      color: #202020;
+
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.6rem;
+      justify-content: space-between;
+      width: 100%;
+      &__search-input {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        input {
+          background-color: transparent;
+          width: 100%;
+          border: none;
+          font-size: 1.3rem;
+
+          padding-left: 10px;
+          &::placeholder {
+            color: #67686c;
+            font-style: italic;
+            font-weight: 400;
+            max-width: 100%;
+          }
+        }
+      }
+
+      &__btn {
+        button {
+          border: none;
+          width: 100%;
+          background-color: transparent;
+          padding: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          outline: none;
+          cursor: pointer;
+          transition: all 0.2s linear;
+          position: relative;
+
+          svg {
+            width: 1.8rem;
+            height: 2.4rem;
+          }
+        }
+
+        &--search {
+          button {
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            background: #ff379b;
+            color: #ffffff;
+            padding: 6px;
+          }
+        }
+
+        &--camera {
+          width: 3rem;
+          position: relative;
+          button {
+            svg {
+              width: 2rem;
+              height: 2.4rem;
+              path {
+                stroke: #67686c;
+              }
+            }
+          }
+        }
+
+        &--filter {
+          button {
+            display: flex;
+            gap: 6px;
+            justify-items: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.3rem;
+            text-align: center;
+            color: #67686c;
+
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              path {
+                stroke: #67686c;
+              }
+            }
+          }
+        }
+
+        &--active {
+          button {
+            color: #ff379b;
+            svg {
+              width: 1.6rem;
+              height: 1.6rem;
+              path {
+                stroke: #ff379b;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

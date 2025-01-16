@@ -1,0 +1,95 @@
+<div
+  class="grid grid-cols-1 justify-items-center gap-y-[15px] pb-[20px] sm:grid-cols-2 sm:gap-x-[10px] desktop-up:grid-cols-4 desktop-up:gap-x-[15px] big-desktop-up:grid-cols-6 big-desktop-up:gap-x-[15px]"
+>
+  @for (item of listStatistic; track i; let i = $index) {
+    <div
+      href="#"
+      [ngStyle]="{
+        backgroundColor: item.backgroundColor
+      }"
+      class="flex w-full max-w-sm flex-col items-center rounded-lg border border-gray-200 bg-white py-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+    >
+      <div class="mb-2 rounded-[30px] bg-[#adefd1ff] px-[20px] py-[5px]">
+        <h6
+          class="text-center text-[28px] font-bold tracking-tight text-[#00203fff] dark:text-white"
+        >
+          {{ item.LineName }}
+        </h6>
+      </div>
+
+      <div
+        class="py-[5px] text-[24px] font-bold text-[#0A6847] dark:text-gray-400"
+      >
+        {{ item.TotalTargetQuantity | number: "1.0-0" }}
+      </div>
+
+      <div class="text-[20px] font-semibold text-[#FF8000] dark:text-gray-400">
+        {{ item.TotalCurrentQuantity | number: "1.0-0" }}
+      </div>
+
+      <div class="mt-[10px] grid grid-cols-2 gap-2">
+        @for (children of item?.Clusters; track $index) {
+          <div class="flex items-center">
+            @if (children.ActualQuantity >= item.TotalCurrentQuantity) {
+              <span class="w-6">
+                <svg
+                  width="30px"
+                  height="30px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M12 9.5C13.3807 9.5 14.5 10.6193 14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5Z"
+                      fill="#6EC207"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+            } @else {
+              <span class="w-6">
+                <svg
+                  width="30px"
+                  height="30px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M12 9.5C13.3807 9.5 14.5 10.6193 14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5Z"
+                      fill="#B8001F"
+                    ></path>
+                  </g>
+                </svg>
+              </span>
+            }
+
+            <span
+              class="text-[18px] font-semibold text-[#B8001F]"
+              [ngClass]="{
+                '!text-[#6EC207]':
+                  children.ActualQuantity >= item.TotalCurrentQuantity
+              }"
+              >C{{ children.ClusterId }}:
+              {{ children.ActualQuantity | number: "1.0-0" }}</span
+            >
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

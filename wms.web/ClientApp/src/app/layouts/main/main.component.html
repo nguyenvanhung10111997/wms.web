@@ -1,0 +1,271 @@
+<!--header-->
+<header>
+  <div
+    class="flex items-center justify-between bg-white px-6 py-1 mobile:rounded-b-md"
+  >
+    <!--logo-->
+    <div class="flex items-center">
+      <button
+        class="hidden items-center rounded-lg bg-transparent px-2 text-sm text-gray-500 mobile:inline-flex"
+        (click)="onOpenSideBar()"
+      >
+        <span class="sr-only">Open sidebar</span>
+        <svg
+          class="h-6 w-6"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+          ></path>
+        </svg>
+      </button>
+
+      <a routerLink="/" class="flex items-center">
+        <span class="text-[16px] font-extrabold text-fun-blue">WMS</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-x-6">
+      <div class="flex items-center">
+        <!--support-->
+        <div class="flex cursor-pointer items-center">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 stroke-mid-gray"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+              />
+            </svg>
+          </span>
+          <span
+            class="ml-[5px] text-[12px] font-semibold capitalize text-mid-gray mobile:hidden"
+            >hỗ trợ</span
+          >
+        </div>
+      </div>
+
+      <div class="flex items-center gap-x-3">
+        <!--account-->
+        <div class="relative">
+          <button
+            (click)="onOpenMenuUser()"
+            class="flex cursor-pointer items-center rounded-md bg-fun-blue px-[15px] py-[2.5px]"
+          >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 stroke-white"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </span>
+            <span
+              class="ml-[5px] text-[12px] font-semibold capitalize text-white mobile:hidden"
+              >tài khoản</span
+            >
+          </button>
+
+          <div
+            class="absolute -right-[10%] top-[90%] z-[100] my-4 min-w-[10rem] list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700"
+            id="dropdown-user"
+            [ngClass]="{
+              hidden: !isOpenUserMenu
+            }"
+          >
+            <div class="px-4 py-3" role="none">
+              <p class="text-sm text-dove-gray dark:text-white" role="none">
+                {{ userPrincipal.FullName }}
+              </p>
+              <p
+                class="truncate text-sm font-medium text-[white] dark:text-gray-300"
+                role="none"
+              >
+                <!-- neil.sims@flowbite.com -->
+              </p>
+            </div>
+            <ul class="py-1" role="none">
+              <li>
+                <a
+                  routerLink="/dashboard"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem"
+                  >Dashboard</a
+                >
+              </li>
+
+              <li>
+                <a
+                  routerLink="#"
+                  class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem"
+                  >Cài đặt</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!--log out-->
+        <div class="flex items-center">
+          <button title="Đăng xuất" (click)="logout()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--navbar-->
+<div
+  class="sticky top-0 z-50 flex items-center justify-between bg-[#0070f4] px-6 py-2 text-white mobile:hidden"
+>
+  <ul class="flex items-center gap-x-2">
+    @for (item of listDataMenu; track $index) {
+      <li>
+        <a
+          [routerLink]="item.link"
+          routerLinkActive="active-link"
+          class="group grid grid-cols-[20px_auto] items-center gap-x-[10px] rounded-lg p-2 text-[11px] font-normal text-[white]"
+        >
+          <span [innerHTML]="item.icon"></span>
+
+          <span>{{ item.name }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</div>
+
+<!--sidebar (mobile)-->
+<div
+  class="fixed left-0 top-0 z-[999] hidden h-screen w-64 -translate-x-full border-r border-gray-200 bg-white py-4 transition-transform mobile:block"
+  [ngClass]="{
+    '!translate-x-0': isOpenSideBar
+  }"
+>
+  <div
+    class="flex items-center justify-between border-0 border-b border-solid border-concrete px-2 pb-3"
+  >
+    <div class="flex items-center">
+      <span class="mr-[5px]"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+          />
+        </svg>
+      </span>
+      <span class="text-[14px] font-semibold text-tundora">Tổng quan</span>
+    </div>
+
+    <button (click)="onOpenSideBar()" class="bg-transparent">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <ul class="h-full overflow-y-auto bg-[#0070f4] p-2">
+    @for (item of listDataMenu; track $index) {
+      <li class="mb-[15px]">
+        <a
+          [routerLink]="item.link"
+          routerLinkActive="active-link"
+          class="group grid grid-cols-[20px_auto] items-center gap-x-[10px] rounded-lg p-2 text-[12px] text-[white]"
+        >
+          <span [innerHTML]="item.icon"></span>
+
+          <span>{{ item.name }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</div>
+
+<safe-page [padding]="breakpoints.isPhoneOnly ? '0 0 80px 0' : '0'">
+  <div class="px-[20px] pt-[20px]">
+    <router-outlet></router-outlet>
+  </div>
+</safe-page>
+
+<!--mobile-->
+<!-- <div class="fixed bottom-0 hidden w-full bg-[#0070f4] px-3 py-1 mobile:block">
+  <app-mobile-scroll-smooth
+    [dataSource]="listDataMenu"
+    [nav]="false"
+    items="2.25"
+    margin="3"
+  >
+    <ng-template let-item>
+      <div #scrollItem>
+        <a
+          [routerLink]="item.link"
+          routerLinkActive="active-link"
+          class="flex items-center gap-x-[10px] rounded-lg p-[5px] text-[10px] text-[white]"
+        >
+          <span [innerHTML]="item.icon"></span>
+
+          <span>{{ item.name }}</span>
+        </a>
+      </div>
+    </ng-template>
+  </app-mobile-scroll-smooth>
+</div> -->

@@ -1,0 +1,16 @@
+<h1>Upload file demo</h1>
+
+<div class="flex w-full items-center justify-center">
+  <div class="h-[8rem] w-[10rem] rounded-[1rem] px-2 text-center">
+    <app-base-image
+      [src]="fileUpload?.filePath"
+      [alt]=""
+      [title]=""
+      [fill]="true"
+      [priority]="true"
+      [placeholder]="true"
+    >
+    </app-base-image>
+  </div>
+  <app-file-upload (onChange)="onChangeFile($event)"></app-file-upload>
+</div>
